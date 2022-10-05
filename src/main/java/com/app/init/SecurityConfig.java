@@ -48,7 +48,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 				// .httpBasic(); // (7)
 
 				.authorizeRequests()
-				.antMatchers("/", "/thymeleaf", "/admin1").permitAll() // (3)
+				.antMatchers("/", "/assets/**", "/static/**", "/resources/**").permitAll() // (3)
 				.anyRequest().authenticated() // (4)
 				.and()
 
