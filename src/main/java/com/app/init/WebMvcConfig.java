@@ -26,7 +26,6 @@ public class WebMvcConfig implements WebMvcConfigurer {
     // registry.addResourceHandler("/resources/**").addResourceLocations("/resources/");
     // }
 
-    // Thymeleaf
     @Bean
     public ViewResolver thymeleafResolver() {
         ThymeleafViewResolver ivr = new ThymeleafViewResolver();
