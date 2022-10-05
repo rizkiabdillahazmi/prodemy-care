@@ -7,16 +7,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class PublicController extends BaseController {
-	@GetMapping("/thymeleaf")
-	public String thyme(Model model) {
-		model.addAttribute("user", "Tes");
-		return "thymeleaf";
-	}
-
 	@GetMapping("/")
 	public String home(Model model) {
-		model.addAttribute("greeting", "Hello awy");
-		return "index";
+		model.addAttribute("metaTitle", "Home - ProdemyCare");
+		return "public/home";
 	}
 
 	@GetMapping("/about")
