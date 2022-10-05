@@ -13,11 +13,11 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import com.app.service.CustomUserDetailService;
 
 @EnableWebSecurity
-@EnableGlobalMethodSecurity(prePostEnabled=true)
-public class SecurityConfig extends WebSecurityConfigurerAdapter{
+@EnableGlobalMethodSecurity(prePostEnabled = true)
+public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	static UserDetailsService userDetailsService = null;
 	static DaoAuthenticationProvider authenticationProvider = null;
-	
+
 	@Bean
 	public BCryptPasswordEncoder passwordEncoder() {
 		return new BCryptPasswordEncoder();
@@ -25,7 +25,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 
 	@Bean
 	public UserDetailsService userDetailsService() {
-		if (userDetailsService==null) {
+		if (userDetailsService == null) {
 			userDetailsService = new CustomUserDetailService();
 		}
 		return userDetailsService;
@@ -34,32 +34,40 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http
+				.authorizeRequests()
+				.antMatchers("/", "/thymeleaf", "/about").permitAll() // (3)
+				.anyRequest().authenticated() // (4)
+				.and()
+
 				.formLogin()
-				.loginPage("/")
+				.loginPage("/login")
 				.failureUrl("/?error=1")
 				.defaultSuccessUrl("/home")
 				.loginProcessingUrl("/login")
 				.usernameParameter("userid")
 				.passwordParameter("password")
 				.and()
-			.headers()
+				.headers()
 				.frameOptions().sameOrigin()
 				.httpStrictTransportSecurity().disable()
 				.and()
-			.csrf().disable()
-			.logout()
+				.csrf().disable()
+				.logout()
 				.logoutUrl("/logout")
 				.and()
-			.authorizeRequests()
+
+				.authorizeRequests()
 				.antMatchers(
 						"/",
 						"/accessdenied",
-						"/assets/**").permitAll()
+						"/assets/**")
+				.permitAll()
 				.anyRequest().authenticated()
 				.and()
-					.exceptionHandling()
-					.accessDeniedPage("/accessdenied");
-		
+
+				.exceptionHandling()
+				.accessDeniedPage("/accessdenied");
+
 	}
 
 	@Override

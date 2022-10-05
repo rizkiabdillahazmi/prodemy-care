@@ -3,7 +3,7 @@ package com.app.init;
 import org.springframework.lang.Nullable;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
-public class AppInitializer extends AbstractAnnotationConfigDispatcherServletInitializer{
+public class AppInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
 	@Override
 	@Nullable
 	protected Class<?>[] getRootConfigClasses() {
@@ -17,7 +17,7 @@ public class AppInitializer extends AbstractAnnotationConfigDispatcherServletIni
 	@Nullable
 	protected Class<?>[] getServletConfigClasses() {
 		return new Class[] {
-				WebMVCConfig.class
+				WebMvcConfig.class
 		};
 	}
 
@@ -27,4 +27,5 @@ public class AppInitializer extends AbstractAnnotationConfigDispatcherServletIni
 				"/"
 		};
 	}
+
 }
