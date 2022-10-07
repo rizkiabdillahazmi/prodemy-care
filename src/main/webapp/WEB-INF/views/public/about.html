@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head lang="en" th:replace="public/layouts/head :: head"> </head>
+
+<body class="bg-[#f6fbff]">
+    <header th:replace="public/layouts/header :: nav"></header>
+
+    <!-- CONTENT -->
+    <!--Hero Section-->
+    <section id="hero" class="pt-24 ">
+        <div class="container max-w-screen-xl px-5 mx-auto">
+            <div class="flex flex-wrap">
+                <div class="self-center px-4 lg:w-1/2">
+                    <h1 class="font-semibold text-[#12649A] text-3xl">Setiap orang berhak sehat <br> dan berdaya</h1>
+                    <p class="mt-3 text-[#45545b]">Sebuah upaya untuk mendorong terciptanya senyuman<br> dan kebahagiaan
+                        diantara
+                        sesama manusia</p>
+                </div>
+                <div class="self-end lg:w-1/2">
+                    <div class="mt-10">
+                        <img th:src="@{/resources/assets/img/gambar1.png}" alt="" class="max-w-full mx-auto">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--End Section-->
+
+    <!--About-->
+    <section class="bg-[#f6fbff] mt-2 py-14">
+        <div class="container max-w-screen-xl px-5 mx-auto">
+            <div class="flex">
+                <h1 class="font-semibold text-2xl text-[#45545b]">Tentang ProdemyCare</h1>
+            </div>
+            <div class="mt-6">
+                <div class="flex flex-wrap">
+                    <div class="border-2 lg:w-[47%] rounded-md bg-white border-white shadow-xl">
+                        <div class="p-6 text-justify">
+                            <div>
+                                <img th:src="@{/resources/assets/img/about.jpg}" alt="" class="w-16 h-13">
+                            </div>
+                            <h1 class="mb-2 font-semibold text-lg text-[#12649A]">Apa itu ProdemyCare?</h1>
+                            <p class="text-[#45545b]">ProdemyCare merupakan situs web yang dibangun khusus untuk
+                                mengumpulkan dana
+                                bagi pasien dan masyarakat yang memiliki kemampuan finansial terbatas, terdampak bencana
+                                alam, serta
+                                tinggal di wilayah sulit dijangkau. ProdemyCare bekerja dengan menghubungkan para calon
+                                donatur dan para
+                                pasien serta masyarakat membutuhkan sehingga mereka dapat memperoleh pengobatan dan
+                                fasilitas pendukung
+                                lainnya yang menyeluruh</p>
+                        </div>
+                    </div>
+                    <div class="lg:w-[6%]"></div>
+                    <div class="border-2 lg:w-[47%] mt-5 lg:mt-0 rounded-md bg-white border-white shadow-xl">
+                        <div class="p-6 text-justify">
+                            <div>
+                                <img th:src="@{/resources/assets/img/people.jpg}" alt="" class="h-12">
+                            </div>
+                            <h1 class="mb-2 font-semibold text-lg text-[#12649A]">Kami Percaya</h1>
+                            <p class="text-[#45545b]">ProdemyCare percaya bahwa semua orang berhak mendapatkan pelayanan
+                                kesehatan
+                                ataupun kesejahteraan agar mereka dapat berperan sebagai individu yang prima dan
+                                produktif. Namun,
+                                faktanya, tidak semua bisa mendapatkan akses kesehatan ataupun kesejahteraan karena
+                                kendala finansial
+                                hingga lokasi wilayah tempat tinggal yang sulit dijangkau.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--End About-->
+
+    <!--Content-->
+    <section class="bg-white mt-14 py-11">
+        <div class="container max-w-screen-xl px-5 mx-auto">
+            <div class="flex flex-wrap">
+                <div class="self-center lg:w-[30%]">
+                    <div class="mx-7 pt-7">
+                        <img th:src="@{/resources/assets/img/bendera.png}" alt="" class="rounded-md w-14">
+                    </div>
+                    <h1 class="font-semibold text-[#12649A] text-3xl pt-5">
+                        Bersama Wujudkan <br>
+                        Indonesia yang Sejahtera, <br>
+                        Merata!
+                    </h1>
+                </div>
+                <div class="self-end lg:w-[70%] mt-5 lg:mt-0">
+                    <img th:src="@{/resources/assets/img/peta.jpg}" alt="">
+                </div>
+            </div>
+    </section>
+    <!--End Conetnt-->
+
+    <!--Cara Kerja-->
+    <section class="bg-[#f6fbff] py-11">
+        <div class="container max-w-screen-xl px-5 mx-auto">
+            <div class="font-semibold text-2xl text-[#12649A]">
+                Bagaimana Kami Bekerja
+            </div>
+            <div class="flex flex-wrap mt-5">
+                <div class="border-2 lg:w-[32%] rounded-md bg-white border-white shadow-xl p-5">
+                    <div>
+                        <div>
+                            <img th:src="@{/resources/assets/img/verivikasi.jpg}" alt="" class="w-12">
+                        </div>
+                        <div>
+                            <h1 class="font-semibold text-xl text-[#12649A]">Verifikasi Data</h1>
+                        </div>
+                        <div>
+                            <p class="text-[#45545b]">Semua galang dana yang diajukan akan melalui proses kurasi dan
+                                verifikasi secara
+                                akurat oleh tim kami.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="lg:w-[1%] mt-5 lg:mt-0"></div>
+                <div class="border-2 lg:w-[32%] rounded-md bg-white border-white shadow-xl p-5">
+                    <div>
+                        <div>
+                            <img th:src="@{/resources/assets/img/galang.jpg}" alt="" class="w-12">
+                        </div>
+                        <div>
+                            <h1 class="font-semibold text-xl text-[#12649A]">Penggalangan Dana</h1>
+                        </div>
+                        <div>
+                            <p class="text-[#45545b]">Proses galang dana dimulai agar terpenuhi jumlah donasi yang telah
+                                disetujui
+                                oleh tim kami.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="lg:w-[1%] mt-5 lg:mt-0"></div>
+                <div class="border-2 lg:w-[32%] rounded-md bg-white border-white shadow-xl p-5">
+                    <div>
+                        <div>
+                            <img th:src="@{/resources/assets/img/salur.jpg}" alt="" class="w-12">
+                        </div>
+                        <div>
+                            <h1 class="font-semibold text-xl text-[#12649A]">Penyaluran Dana</h1>
+                        </div>
+                        <div>
+                            <p class="text-[#45545b]">Hasil donasi akan disalurkan kepada penerima manfaat baik melalui
+                                rekan kami
+                                atau pun secara langsung.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--End-->
+
+    <!--Quotes-->
+    <section class="bg-white py-11">
+        <div class="container max-w-screen-xl px-5 mx-auto">
+            <div class="mt-16 mb-16">
+                <p class="text-center text-3xl text-[#12649A] opacity-60">"Berbagi kesedihan akan membuatnya
+                    berkurang,<br>
+                    berbagi kebahagian akan membuatnya berlipat ganda." </p>
+            </div>
+        </div>
+    </section>
+
+    <footer lang="en" th:replace="public/layouts/footer :: footer"> </footer>
+</body>
+
+</html>

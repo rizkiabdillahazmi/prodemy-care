@@ -104,7 +104,7 @@ public class AdminController extends BaseController {
         event.setName(req.getParameter("name"));
         eventService.update(event);
 
-        return "redirect:/admincoba/kategori";
+        return "redirect:/admin/kategori";
     }
 
     @GetMapping("/kategoriAdd")
@@ -118,14 +118,14 @@ public class AdminController extends BaseController {
         event.setName(req.getParameter("name"));
         eventService.insert(event);
 
-        return "redirect:/admincoba/kategori";
+        return "redirect:/admin/kategori";
     }
 
     @GetMapping("/kategoriDelete")
     public String deleteEvent(@RequestParam int id) throws Exception {
         eventService.deleteById(id);
 
-        return "redirect:/admincoba/payment";
+        return "redirect:/admin/payment";
     }
 
     @Autowired
