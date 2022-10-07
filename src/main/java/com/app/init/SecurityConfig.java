@@ -47,15 +47,24 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 				// .and()
 				// .httpBasic(); // (7)
 
-				.authorizeRequests()
-				.antMatchers("/", "/assets/**", "/static/**", "/resources/**").permitAll() // (3)
-				.anyRequest().authenticated() // (4)
-				.and()
+				// .authorizeRequests()
+				// .antMatchers("/", "/public/**", "/assets/**", "/static/**", "/resources/**",
+				// "/admincoba/**")
+				// .permitAll() // (3)
+				// .anyRequest().authenticated() // (4)
+				// .and()
+
+				// .formLogin()
+				// .loginPage("/login")
+				// .failureUrl("/login-error")
+				// .and()
+				// .logout()
+				// .logoutSuccessUrl("/");
 
 				.formLogin()
 				.loginPage("/login")
 				.failureUrl("/?error=1")
-				.defaultSuccessUrl("/home")
+				.defaultSuccessUrl("/user")
 				.loginProcessingUrl("/login")
 				.usernameParameter("userid")
 				.passwordParameter("password")
@@ -72,8 +81,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 				.authorizeRequests()
 				.antMatchers(
 						"/",
+						"/login",
 						"/accessdenied",
-						"/assets/**")
+						"/resources/**")
 				.permitAll()
 				.anyRequest().authenticated()
 				.and()
@@ -85,6 +95,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Override
 	public void configure(WebSecurity web) throws Exception {
-		web.ignoring().antMatchers("/assets**", "/dandelion-assets/**");
+		web.ignoring().antMatchers("/assets**", "/dandelion-assets/**", "/resources/**");
 	}
 }

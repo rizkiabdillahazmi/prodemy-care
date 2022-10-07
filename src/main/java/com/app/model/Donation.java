@@ -23,38 +23,38 @@ import lombok.NoArgsConstructor;
 @Table(name = "donation")
 public class Donation {
 	@Id
-	@GeneratedValue(generator = "UUID")
-	@GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator", parameters = {
-			@Parameter(name = "uuid_gen_strategy_class", value = "org.hibernate.id.uuid.CustomVersionOneStrategy") })
 	@Column(name = "donation_id", updatable = false, nullable = false)
-	private UUID id;
+	private int id;
 
-	@Column(name = "event_id", updatable = false, nullable = false)
+	@Column(name = "event_id", nullable = false)
 	private String eventId;
 
-	@Column(name = "donation_title", updatable = false, nullable = false)
+	@Column(name = "donation_title",  nullable = false)
 	private String title;
 
-	@Column(name = "donation_target", updatable = false, nullable = false)
+	@Column(name = "donation_target", nullable = false)
 	private String target;
 
-	@Column(name = "donation_deadline", updatable = false, nullable = false)
+	@Column(name = "donation_deadline",  nullable = false)
 	private LocalDateTime deadline;
 
-	@Column(name = "donation_status", updatable = false, nullable = false)
+	@Column(name = "donation_status", nullable = false)
 	private int status;
 
-	@Column(name = "donation_file", updatable = false, nullable = false)
+	@Column(name = "donation_file",  nullable = false)
 	private String file;
 
-	@Column(name = "donation_photo", updatable = false, nullable = false)
+	@Column(name = "donation_photo",  nullable = false)
 	private String photo;
+	
+	@Column(name = "payment_id", nullable = false)
+	private String payment;
 
 	@CreationTimestamp
-	@Column(name = "created_at", nullable = false, updatable = false)
+	@Column(name = "created_at",  updatable = false)
 	private LocalDateTime createdAt;
 
 	@UpdateTimestamp
-	@Column(name = "updated_at", nullable = false, updatable = false)
+	@Column(name = "updated_at", updatable = false)
 	private LocalDateTime updatedAt;
 }

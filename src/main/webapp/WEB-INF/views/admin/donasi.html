@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>Ini donasi</h1>
+	<table>
+		<tr>
+			<th>Donasi ID</th>
+			<th>Judul</th>
+			<th>Kategori</th>
+			<th>Target</th>
+			<th>Tanggal Dibuat</th>
+			<th>Tanggal Selesei</th>
+			<th>Status Donasi</th>
+			<th>File</th>
+			<th>Photo</th>
+			<th>Tanggal Update</th>
+		</tr>
+		<tr th:each="donasi : ${list}">
+            <td th:text="${donasi.id}"></td>
+            <td th:text="${donasi.title}"></td>
+            <td th:text="${donasi.eventId}"></td>
+            <td th:text="${donasi.target}"></td>
+            <td th:text="${donasi.createdAt}"></td>
+            <td th:text="${donasi.deadline}"></td>
+            <td th:text="${donasi.status}"></td>
+            <td th:text="${donasi.file}"></td>
+            <td th:text="${donasi.photo}"></td>
+            <td th:text="${donasi.payment}"></td>
+            <td th:text="${donasi.updatedAt}"></td>
+     	</tr>
+	</table>
+</body>
+</html>

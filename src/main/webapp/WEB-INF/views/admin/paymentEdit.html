@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="ISO-8859-1">
+	<title>Insert title here</title>
+</head>
+
+<body>
+	<h1>Edit Payment</h1>
+
+	<form action="#" th:action="@{paymentUpdate/(id=${pay.id})}" th:object="${pay}" method="post">
+		<input type="text" th:field="*{id}" id="id" name="id" /><br>
+		<label for="name">Nama</label><br>
+		<input type="text" th:field="*{name}" id="name" name="name" /><br>
+		<label for="rekening">Rekening</label><br>
+		<input type="text" th:field="*{rekening}" id="rekening" name="rekening" /><br>
+		<button type="submit">Update</button>
+	</form>
+</body>
+
+</html>

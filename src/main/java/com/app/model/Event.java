@@ -22,7 +22,7 @@ public class Event {
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="pk_event")
 	private int id;
 	
-	@Column(name = "event_name", updatable = false, nullable = false)
+	@Column(name = "event_name", nullable = false)
 	private String name;
 
 }

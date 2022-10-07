@@ -22,10 +22,10 @@ public class Payment {
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="pk_payment")
 	private int id;
 	
-	@Column(name = "payment_name", updatable = false, nullable = false)
+	@Column(name = "payment_name",nullable = false)
 	private String name;
 	
-	@Column(name = "rekening", updatable = false, nullable = false)
+	@Column(name = "rekening", nullable = false)
 	private String rekening;
 
 }

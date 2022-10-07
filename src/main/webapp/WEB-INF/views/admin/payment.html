@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>Ini payment</h1>
+	
+	<a href="paymentAdd">Tambah</a><br>
+	
+	
+	<table>
+		<thead>
+			<tr>
+	            <th>ID</th>
+	            <th>Nama Bank</th>
+	            <th>Nomor Rekening</th>
+	            <th>Action</th>
+	        </tr>
+		</thead>
+		<tbody th:each="pay : ${list}">
+			<tr>
+	            <td th:text="${pay.id}"></td>
+	            <td th:text="${pay.name}"></td>
+	            <td th:text="${pay.rekening}"></td>
+	            <td>
+	            	<a th:href="@{paymentDelete(id=${pay.id})}">Hapus</a>
+	            	<a th:href="@{paymentEdit(id=${pay.id})}">Edit</a>
+	            </td>
+	        </tr>
+		</tbody>
+     </table>
+	
+</body>
+</html>
