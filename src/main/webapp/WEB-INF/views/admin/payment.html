@@ -1,36 +1,118 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<head>
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
-</head>
-<body>
-	<h1>Ini payment</h1>
-	
-	<a href="paymentAdd">Tambah</a><br>
-	
-	
-	<table>
-		<thead>
-			<tr>
-	            <th>ID</th>
-	            <th>Nama Bank</th>
-	            <th>Nomor Rekening</th>
-	            <th>Action</th>
-	        </tr>
-		</thead>
-		<tbody th:each="pay : ${list}">
-			<tr>
-	            <td th:text="${pay.id}"></td>
-	            <td th:text="${pay.name}"></td>
-	            <td th:text="${pay.rekening}"></td>
-	            <td>
-	            	<a th:href="@{paymentDelete(id=${pay.id})}">Hapus</a>
-	            	<a th:href="@{paymentEdit(id=${pay.id})}">Edit</a>
-	            </td>
-	        </tr>
-		</tbody>
-     </table>
-	
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head lang="en" th:replace="admin/layouts/head :: head"> </head>
+
+<body class="bg-gray-100">
+    <aside th:replace="admin/layouts/aside :: aside"></aside>
+    <main class="w-[80%] ml-auto">
+        <div th:replace="admin/layouts/header :: header"></div>
+
+        <div class="mx-6 mt-24">
+            <!-- component -->
+            <div class="overflow-x-auto">
+                <div class="flex items-center justify-center overflow-hidden font-sans">
+                    <div class="w-full">
+                        <button onclick="showForm()"
+                            class="block w-40 p-2 mb-4 text-xs font-semibold text-center text-white bg-teal-600 rounded-md hover:bg-teal-500">+
+                            Tambah
+                            Rekening</button>
+                        <form id="formInput" action="paymentAdd" method="post"
+                            class="w-1/3 my-5 transition-all duration-500 ease-[ease]" style="display: none;">
+                            <div class="relative z-0 w-full mb-6 group">
+                                <input type="text" name="name" id="bank"
+                                    class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                                    placeholder=" " required />
+                                <label for="name"
+                                    class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Bank</label>
+                            </div>
+                            <div class="relative z-0 w-full mb-6 group">
+                                <input type="text" name="rekening" id="noRekening"
+                                    class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                                    placeholder=" " required />
+                                <label for="rekening"
+                                    class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">No
+                                    Rekening</label>
+                            </div>
+                            <button type="submit"
+                                class="w-full px-3 py-2 text-xs font-semibold text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 sm:w-auto">Tambah</button>
+                        </form>
+
+                        <div class="bg-white rounded-lg shadow-md">
+                            <div
+                                class="grid grid-cols-[0.2fr_repeat(3,_0.5fr)_0.3fr] justify-items-center items-center border-b-2 rounded-t-lg border-slate-300 uppercase px-4 py-3 text-white bg-indigo-600 font-semibold">
+                                <div>
+                                    No
+                                </div>
+                                <div>
+                                    Nama Bank
+                                </div>
+                                <div>
+                                    NO Rekening
+                                </div>
+                                <div>
+                                    Status
+                                </div>
+                                <div>
+                                    AKSI
+                                </div>
+                            </div>
+                            <div th:each="pay, iter : ${list}"
+                                class="py-4 dropdown__wrapper even:bg-white odd:bg-stone-200 hover:bg-gray-200">
+                                <div
+                                    class="dropdown__cell grid grid-cols-[0.2fr_repeat(3,_0.5fr)_0.3fr] items-center px-4">
+                                    <div class="text-center" th:text="${iter.index+1}">
+                                    </div>
+                                    <div class="text-center" th:text="${pay.name}">
+                                    </div>
+                                    <div class="text-center" th:text="${pay.rekening}">
+                                    </div>
+                                    <div class="text-center">
+                                        <span
+                                            class="px-3 py-1 text-xs font-bold text-green-600 bg-green-200 rounded-full">Active</span>
+                                    </div>
+                                    <div class="cursor-pointer button-show">
+                                        <div class="flex justify-center text-center item-center">
+                                            <a th:href="@{paymentEdit(id=${pay.id})}">
+                                                <div class="w-5 mr-2 transform hover:text-blue-500 hover:scale-110">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none"
+                                                        viewBox="0 0 24 24" stroke="currentColor">
+                                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                                            stroke-width="2"
+                                                            d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
+                                                    </svg>
+                                                </div>
+                                            </a>
+                                            <a th:href="@{paymentDelete(id=${pay.id})}">
+                                                <div class="w-5 transform hover:text-red-500 hover:scale-110">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none"
+                                                        viewBox="0 0 24 24" stroke="currentColor">
+                                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                                            stroke-width="2"
+                                                            d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                                                    </svg>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div
+                                    class="dropdown__cell-content transition-all duration-300 ease-[ease] max-h-0 overflow-hidden overflow-y-scroll">
+                                    <div
+                                        class="max-w-screen-lg p-4 mx-20 text-sm border-4 border-green-500 border-dashed rounded-md">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </section>
+        <footer lang="en" th:replace="admin/layouts/footer :: footer"> </footer>
+    </main>
+
+    <script th:src="@{/resources/assets/js/script.js}"></script>
 </body>
+
 </html>

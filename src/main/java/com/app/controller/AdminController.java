@@ -22,14 +22,15 @@ import com.app.service.PaymentService;
 @Controller
 @RequestMapping("/admin")
 public class AdminController extends BaseController {
-    @Autowired
-    private PaymentService paymentService;
 
     @GetMapping("/")
     public String index(Model model) {
         model.addAttribute("metaTitle", "Dashboard - Admin");
         return "admin/index";
     }
+
+    @Autowired
+    private PaymentService paymentService;
 
     @GetMapping("/payment")
     public String getPayment(Model model) throws Exception {
@@ -125,7 +126,7 @@ public class AdminController extends BaseController {
     public String deleteEvent(@RequestParam int id) throws Exception {
         eventService.deleteById(id);
 
-        return "redirect:/admin/payment";
+        return "redirect:/admin/kategori";
     }
 
     @Autowired
