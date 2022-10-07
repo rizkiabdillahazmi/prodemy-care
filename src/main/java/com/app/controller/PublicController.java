@@ -13,16 +13,22 @@ public class PublicController extends BaseController {
 		return "public/index";
 	}
 
+	@GetMapping("/about")
+	public String about(Model model) {
+		model.addAttribute("metaTitle", "About - ProdemyCare");
+		return "public/about";
+	}
+
 	@GetMapping("/login")
 	public String login(Model model) {
 		model.addAttribute("metaTitle", "Login - ProdemyCare");
 		return "public/login";
 	}
 
-	@GetMapping("/about")
-	public String about(Model model) {
-		model.addAttribute("greeting", "Hello awy");
-		return "index";
+	@GetMapping("/register")
+	public String registerForm(Model model) {
+		model.addAttribute("metaTitle", "register - ProdemyCare");
+		return "public/register";
 	}
 
 	@GetMapping("/admin")
