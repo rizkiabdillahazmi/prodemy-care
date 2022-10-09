@@ -1,132 +1,69 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
-<head lang="en" th:replace="public/layouts/head :: head"> </head>
+<head lang="en" th:replace="public/layouts/head :: head">
+</head>
 
 <body class="bg-[#f6fbff]">
-    <header th:replace="public/layouts/header :: nav"></header>
+	<header th:replace="public/layouts/header :: nav"></header>
 
-    <!-- CONTENT -->
-    <section class="mt-20">
-        <div class="container max-w-screen-xl mx-auto">
-            <div class="w-full">
-                <img class="rounded-md"
-                    src="https://70867a2ef4c36f4d1885-185a360f54556c7e8b9c7a9b6e422c6e.ssl.cf6.rackcdn.com/file/2022-09-12/rYhVbVxJCRg1.jpg"
-                    alt="">
-            </div>
-        </div>
-    </section>
+	<!-- CONTENT -->
+	<section class="mt-20">
+		<div class="container max-w-screen-xl mx-auto">
+			<div class="w-full">
+				<img class="rounded-md"
+					src="https://70867a2ef4c36f4d1885-185a360f54556c7e8b9c7a9b6e422c6e.ssl.cf6.rackcdn.com/file/2022-09-12/rYhVbVxJCRg1.jpg"
+					alt="">
+			</div>
+		</div>
+	</section>
 
-    <section class="mt-8">
-        <div class="container max-w-screen-xl mx-auto">
-            <div class="flex justify-between w-full p-6 bg-white rounded-lg shadow-md">
-                <a href="" class="text-xs">Donasi Pasien</a>
-                <a href="" class="text-xs">Donasi Yayasan</a>
-                <a href="" class="text-xs">Donasi Universal</a>
-                <a href="" class="text-xs">Donasi Rutin</a>
-            </div>
-        </div>
-    </section>
+	<section class="mt-8">
+		<div class="container max-w-screen-xl mx-auto">
+			<div
+				class="flex justify-between w-full p-6 bg-white rounded-lg shadow-md">
+				<a href="" class="text-xs">Donasi Pasien</a> <a href=""
+					class="text-xs">Donasi Yayasan</a> <a href="" class="text-xs">Donasi
+					Universal</a> <a href="" class="text-xs">Donasi Rutin</a>
+			</div>
+		</div>
+	</section>
 
-    <section class="mt-8">
-        <div class="container max-w-screen-xl p-4 mx-auto bg-white rounded-md shadow-md">
-            <h2 class="mb-4">Donasi Sekarang</h2>
-            <div class="grid flex-wrap items-center grid-cols-3 gap-x-4 gap-y-6">
+	<section class="mt-8">
+		<div
+			class="container max-w-screen-xl p-4 mx-auto bg-white rounded-md shadow-md">
+			<h2 class="mb-4">Donasi Sekarang</h2>
+			<div class="grid flex-wrap items-center grid-cols-3 gap-x-4 gap-y-6">
 
-                <div class="border-2 border-transparent rounded-lg shadow-md hover:border-blue-500 hover:border-2">
-                    <div class="relative w-[100%]">
-                        <img class="rounded-t-lg block h-[100%]"
-                            src="https://70867a2ef4c36f4d1885-185a360f54556c7e8b9c7a9b6e422c6e.ssl.cf6.rackcdn.com/file/2022-05-07/xCqHNqxN6pxM.jpeg"
-                            alt="">
-                        <div class="absolute top-0 p-1 text-xs font-semibold text-white bg-blue-400 rounded-lg">38
-                            Donatur
-                        </div>
-                    </div>
-                    <div class="pb-4 mx-2 mt-2">
-                        <a href="">Mengidap Penyakit Paru selama 2 tahun</a>
-                        <div class="h-1 bg-blue-300 rounded-lg">
-                            <div class="w-1/2 h-1 bg-blue-500 rounded-lg"></div>
-                        </div>
-                        <p class="mt-2 text-sm font-semibold">Rp 5.700.000</p>
-                        <p class="text-xs">Terdanai</p>
-                    </div>
-                </div>
-                <div class="border-2 border-transparent rounded-lg shadow-md hover:border-blue-500 hover:border-2">
-                    <div class="relative w-[100%]">
-                        <img class="rounded-t-lg block h-[100%]"
-                            src="https://70867a2ef4c36f4d1885-185a360f54556c7e8b9c7a9b6e422c6e.ssl.cf6.rackcdn.com/file/2022-05-07/xCqHNqxN6pxM.jpeg"
-                            alt="">
-                        <div class="absolute top-0 p-1 text-xs font-semibold text-white bg-blue-400 rounded-lg">38
-                            Donatur
-                        </div>
-                    </div>
-                    <div class="pb-4 mx-2 mt-2">
-                        <a href="">Mengidap Penyakit Paru selama 2 tahun</a>
-                        <div class="h-1 bg-blue-300 rounded-lg">
-                            <div class="w-1/2 h-1 bg-blue-500 rounded-lg"></div>
-                        </div>
-                        <p class="mt-2 text-sm font-semibold">Rp 5.700.000</p>
-                        <p class="text-xs">Terdanai</p>
-                    </div>
-                </div>
-                <div class="border-2 border-transparent rounded-lg shadow-md hover:border-blue-500 hover:border-2">
-                    <div class="relative w-[100%]">
-                        <img class="rounded-t-lg block h-[100%]"
-                            src="https://70867a2ef4c36f4d1885-185a360f54556c7e8b9c7a9b6e422c6e.ssl.cf6.rackcdn.com/file/2022-05-07/xCqHNqxN6pxM.jpeg"
-                            alt="">
-                        <div class="absolute top-0 p-1 text-xs font-semibold text-white bg-blue-400 rounded-lg">38
-                            Donatur
-                        </div>
-                    </div>
-                    <div class="pb-4 mx-2 mt-2">
-                        <a href="">Mengidap Penyakit Paru selama 2 tahun</a>
-                        <div class="h-1 bg-blue-300 rounded-lg">
-                            <div class="w-1/2 h-1 bg-blue-500 rounded-lg"></div>
-                        </div>
-                        <p class="mt-2 text-sm font-semibold">Rp 5.700.000</p>
-                        <p class="text-xs">Terdanai</p>
-                    </div>
-                </div>
-                <div class="border-2 border-transparent rounded-lg shadow-md hover:border-blue-500 hover:border-2">
-                    <div class="relative w-[100%]">
-                        <img class="rounded-t-lg block h-[100%]"
-                            src="https://70867a2ef4c36f4d1885-185a360f54556c7e8b9c7a9b6e422c6e.ssl.cf6.rackcdn.com/file/2022-05-07/xCqHNqxN6pxM.jpeg"
-                            alt="">
-                        <div class="absolute top-0 p-1 text-xs font-semibold text-white bg-blue-400 rounded-lg">38
-                            Donatur
-                        </div>
-                    </div>
-                    <div class="pb-4 mx-2 mt-2">
-                        <a href="">Mengidap Penyakit Paru selama 2 tahun</a>
-                        <div class="h-1 bg-blue-300 rounded-lg">
-                            <div class="w-1/2 h-1 bg-blue-500 rounded-lg"></div>
-                        </div>
-                        <p class="mt-2 text-sm font-semibold">Rp 5.700.000</p>
-                        <p class="text-xs">Terdanai</p>
-                    </div>
-                </div>
-                <div class="border-2 border-transparent rounded-lg shadow-md hover:border-blue-500 hover:border-2">
-                    <div class="relative w-[100%]">
-                        <img class="rounded-t-lg block h-[100%]"
-                            src="https://70867a2ef4c36f4d1885-185a360f54556c7e8b9c7a9b6e422c6e.ssl.cf6.rackcdn.com/file/2022-05-07/xCqHNqxN6pxM.jpeg"
-                            alt="">
-                        <div class="absolute top-0 p-1 text-xs font-semibold text-white bg-blue-400 rounded-lg">38
-                            Donatur
-                        </div>
-                    </div>
-                    <div class="pb-4 mx-2 mt-2">
-                        <a href="">Mengidap Penyakit Paru selama 2 tahun</a>
-                        <div class="h-1 bg-blue-300 rounded-lg">
-                            <div class="w-1/2 h-1 bg-blue-500 rounded-lg"></div>
-                        </div>
-                        <p class="mt-2 text-sm font-semibold">Rp 5.700.000</p>
-                        <p class="text-xs">Terdanai</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <footer lang="en" th:replace="public/layouts/footer :: footer"> </footer>
+				<div th:each="donation : ${listDonation}"
+					class="border-2 border-transparent rounded-lg shadow-md hover:border-blue-500 hover:border-2">
+					<div class="relative w-[100%]">
+						<img class="rounded-t-lg block h-[100%]"
+							src="https://70867a2ef4c36f4d1885-185a360f54556c7e8b9c7a9b6e422c6e.ssl.cf6.rackcdn.com/file/2022-05-07/xCqHNqxN6pxM.jpeg"
+							alt="">
+						<div th:text="${donation.donatur.size + ' Donatur'}"
+							class="absolute top-0 p-1 text-xs font-semibold text-white bg-blue-400 rounded-lg"></div>
+					</div>
+					<div class="pb-4 mx-2 mt-2">
+						<a th:href="@{donasi(id=${donation.id})}"
+							th:text="${donation.title}" class="block h-20"></a>
+						<div class="h-1 bg-blue-300 rounded-lg">
+<!-- 							<div class="w-1/2 h-1 bg-blue-500 rounded-lg"></div> -->
+							<div id="progress" class="h-1 bg-blue-500 rounded-lg"></div>
+						</div>
+						<p class="mt-2 text-sm font-semibold">Rp <span th:text="${donation.donatur.size != 0} ? ${#numbers.formatInteger(#aggregates.sum(donation.donatur.![nominal]),3,'POINT')} : ${donation.donatur.size}">0</span></p>
+						<p class="text-xs">Terdanai</p>
+						<p id="nominal" th:text="${donation.donatur.size != 0} ? ${#aggregates.sum(donation.donatur.![nominal])} : ${donation.donatur.size}">0</p>
+						<p id="target" th:text="${donation.target}"></p>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</section>
+	<footer lang="en" th:replace="public/layouts/footer :: footer">
+	</footer>
+	<script th:src="@{/resources/assets/js/home.js}"></script>
 </body>
 
 </html>

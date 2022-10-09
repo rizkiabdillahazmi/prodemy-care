@@ -82,6 +82,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 				.antMatchers(
 						"/",
 						"/about",
+						"/donasi",
+						"/donasi/**",
 						"/login",
 						"/register",
 						"/accessdenied",
@@ -97,6 +99,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Override
 	public void configure(WebSecurity web) throws Exception {
-		web.ignoring().antMatchers("/assets**", "/dandelion-assets/**", "/resources/**");
+		web.ignoring().antMatchers("/assets**", "/dandelion-assets/**", "/resources/**", "/donasi");
 	}
 }

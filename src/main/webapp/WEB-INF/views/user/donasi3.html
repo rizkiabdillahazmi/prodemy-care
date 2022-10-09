@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head lang="en" th:replace="admin/layouts/head :: head"> </head>
+
+<body class="bg-gray-100">
+     <aside th:replace="user/layouts/aside :: aside"></aside>
+     <main class="w-[80%] ml-auto">
+          <div th:replace="user/layouts/header :: header"></div>
+
+          <section class="mx-6 mt-24">
+               <!-- component -->
+               <div class="overflow-x-auto">
+                    <div class="flex items-center justify-center overflow-hidden font-sans">
+                         <div class="w-full">
+                              <button onclick="showForm()"
+                                   class="block w-40 p-2 mb-4 text-xs font-semibold text-center text-white bg-teal-600 rounded-md hover:bg-teal-500">+
+                                   Ajukan Donasi</button>
+                              <form id="formInput" action="kategoriAdd" method="post"
+                                   class="w-1/3 my-5 transition-all duration-500 ease-[ease]" style="display: none;">
+                                   <div class="relative z-0 w-full mb-6 group">
+                                        <input type="text" name="name" id="bank"
+                                             class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                                             placeholder=" " required />
+                                        <label for="name"
+                                             class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Nama
+                                             Kategori</label>
+                                   </div>
+                                   <button type="submit"
+                                        class="w-full px-3 py-2 text-xs font-semibold text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 sm:w-auto">Tambah</button>
+                              </form>
+
+                              <div class="w-full border-2 border-white rounded-lg shadow-lg">
+                            <div
+                                class="grid grid-cols-[0.07fr_0.5fr_repeat(4,_0.4fr)_0.2fr] justify-items-center items-center border-b-2 rounded-t-lg border-slate-300 uppercase px-4 py-3 text-white bg-indigo-600 font-semibold">
+                                <div>
+                                    No
+                                </div>
+                                <div>
+                                    Judul
+                                </div>
+                                <div>
+                                    Kategori
+                                </div>
+                                <div>
+                                    Target Donasi
+                                </div>
+                                <div>
+                                    Deadline
+                                </div>
+                                <div>
+                                    Status
+                                </div>
+                                <div>
+                                    AKSI
+                                </div>
+                            </div>
+                            <div th:each="donasi, iter : ${listDonasi}" class="py-4 dropdown__wrapper even:bg-white odd:bg-gray-100 hover:bg-gray-200">
+                                <div
+                                    class="dropdown__cell grid grid-cols-[0.07fr_0.5fr_repeat(4,_0.4fr)_0.2fr] items-center px-4">
+                                    <div th:text="${iter.index+1}" class="text-center"></div>
+                                    <div th:text="${donasi.title}" class="ml-2 text-left"></div>
+                                    <div th:text="${donasi.event.name}" class="text-center"></div>
+                                    <div th:text="${donasi.target}" class="text-center"></div>
+                                    <div th:text="${donasi.deadline}" class="text-center"></div>
+                                    <div class="text-center">
+                                        <span
+                                            class="px-2 py-1 text-xs font-bold text-red-600 bg-red-200 rounded-full">Butuh
+                                            Persetujuan</span>
+                                    </div>
+                                    <div class="cursor-pointer button-show">
+                                        <div class="flex justify-center text-center item-center">
+                                            <div class="w-5 mr-2 transform hover:text-green-500 hover:scale-110"
+                                                onclick="expandCell(this)">
+                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                                    stroke="currentColor">
+                                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                                        stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                                        stroke-width="2"
+                                                        d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                                                </svg>
+                                            </div>
+                                            <div class="w-5 mr-2 transform hover:text-blue-500 hover:scale-110">
+                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                                    stroke="currentColor">
+                                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                                        stroke-width="2"
+                                                        d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
+                                                </svg>
+                                            </div>
+                                            <div class="w-5 transform hover:text-red-500 hover:scale-110">
+                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                                    stroke="currentColor">
+                                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                                        stroke-width="2"
+                                                        d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                                                </svg>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div
+                                    class="dropdown__cell-content transition-all duration-300 ease-[ease] max-h-0 overflow-hidden overflow-y-scroll">
+                                    <div
+                                        class="max-w-screen-lg p-4 mx-20 text-sm border-4 border-blue-400 border-dashed rounded-md">
+                                        <div class="text-lg font-bold text-center">Detail Donasi:</div>
+                                        <div class="w-[80%] mt-2 mx-auto bg-stone-100 p-4 rounded-md font-semibold">
+                                            <div class="flex justify-between py-1">
+                                                <div class="w-[30%]">Judul</div>
+                                                <div class="w-[5%] text-center">:</div>
+                                                <div class="w-[65%]">Bencana Alam di Kabupaten A</div>
+                                            </div>
+                                            <div class="flex justify-between py-1">
+                                                <div class="w-[30%]">Kategori</div>
+                                                <div class="w-[5%] text-center">:</div>
+                                                <div class="w-[65%]">Bencana Alam</div>
+                                            </div>
+                                            <div class="flex justify-between py-1">
+                                                <div class="w-[30%]">Target Donasi</div>
+                                                <div class="w-[5%] text-center">:</div>
+                                                <div class="w-[65%]">Rp 20.000.000</div>
+                                            </div>
+                                            <div class="flex justify-between py-1">
+                                                <div class="w-[30%]">Tanggal Pengajuan</div>
+                                                <div class="w-[5%] text-center">:</div>
+                                                <div class="w-[65%]">07 Oktober 2022</div>
+                                            </div>
+                                            <div class="flex justify-between py-1">
+                                                <div class="w-[30%]">Tanggal berakhir</div>
+                                                <div class="w-[5%] text-center">:</div>
+                                                <div class="w-[65%]">10 Oktober 2022</div>
+                                            </div>
+                                            <div class="flex justify-between py-1">
+                                                <div class="w-[30%]">Status Donasi</div>
+                                                <div class="w-[5%] text-center">:</div>
+                                                <div class="w-[65%]">Menunggu Persetujuan</div>
+                                            </div>
+                                            <div class="flex justify-between py-1">
+                                                <div class="w-[30%]">Deskripsi</div>
+                                                <div class="w-[5%] text-center">:</div>
+                                                <div class="w-[65%]">Menunggu Persetujuan</div>
+                                            </div>
+                                            <div class="flex justify-between py-1">
+                                                <div class="w-[30%]">Foto</div>
+                                                <div class="w-[5%] text-center">:</div>
+                                                <div class="w-[65%]">Foto</div>
+                                            </div>
+                                            <div class="flex justify-between py-1">
+                                                <div class="w-[30%]">No Rekening</div>
+                                                <div class="w-[5%] text-center">:</div>
+                                                <div class="w-[65%]">77664422</div>
+                                            </div>
+                                            <div th:each="donatur : ${donasi.donatur}">
+                                            	<div th:text="${donatur.nama}"></div>
+                                            	<div th:text="${donatur.nominal}"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                         </div>
+                    </div>
+               </div>
+               </div>
+          </section>
+          <footer lang="en" th:replace="user/layouts/footer :: footer"> </footer>
+     </main>
+
+     <script th:src="@{/resources/assets/js/script.js}"></script>
+</body>
+
+</html>

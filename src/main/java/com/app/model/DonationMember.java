@@ -25,15 +25,11 @@ public class DonationMember implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	@Id
-	@Column(name = "user_id", updatable = false, nullable = false)
-	@SequenceGenerator(name="pk_user", sequenceName="seq_dmember", allocationSize=1)
-	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="pk_user")
-	private Long userId;
+	@Column(name = "donatur_id", updatable = false, nullable = false)
+	private Long donaturId;
 	
 	@Id
 	@Column(name = "donation_id", updatable = false, nullable = false)
-	@SequenceGenerator(name="pk_donation", sequenceName="seq_dmember", allocationSize=1)
-	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="pk_donation")
 	private Long donationId;
 	
 }

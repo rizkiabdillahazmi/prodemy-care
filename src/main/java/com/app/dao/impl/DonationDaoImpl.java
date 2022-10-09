@@ -24,14 +24,14 @@ public class DonationDaoImpl implements DonationDao {
 	}
 
 	@Override
-	public Donation findById(int id) throws Exception {
+	public Donation findById(Long id) throws Exception {
 		Session session = this.sessionFactory.getCurrentSession();
 		Donation donation = (Donation) session.get(Donation.class, id);
 		return donation;
 	}
 
 	@Override
-	public void deleteById(String id) throws Exception {
+	public void deleteById(Long id) throws Exception {
 		Session session = this.sessionFactory.getCurrentSession();
 		Donation donation = (Donation) session.load(Donation.class, id);
 		session.delete(donation);
@@ -39,7 +39,7 @@ public class DonationDaoImpl implements DonationDao {
 	}
 
 	@Override
-	public void insert(Donation donation) throws Exception {
+	public void save(Donation donation) throws Exception {
 		Session session = this.sessionFactory.getCurrentSession();
 		session.save(donation);
 		logger.debug("Donation saved -> {0}", donation);
@@ -47,13 +47,13 @@ public class DonationDaoImpl implements DonationDao {
 	}
 
 	@Override
-	public void update(Donation donation) throws Exception {
-		Session session = this.sessionFactory.getCurrentSession();
-		session.update(donation);
-		logger.debug("Donation updated -> {0}", donation);
-		
-	}
-
+    public void update(Donation donation) throws Exception {
+        Session session = this.sessionFactory.getCurrentSession();
+        session.update(donation);
+        logger.debug("Donation saved -> {0}", donation);
+        
+    }
+	
 	@Override
 	public List<Donation> findAll() throws Exception {
 		Session session = this.sessionFactory.getCurrentSession();
@@ -61,5 +61,10 @@ public class DonationDaoImpl implements DonationDao {
 		return result;
 	}
 	
-	
+	@Override
+    public List<Donation> homeFindAll() throws Exception {
+        Session session = this.sessionFactory.getCurrentSession();
+        List<Donation> result = session.createQuery("from Donation dnt where dnt.status=1").list();
+        return result;
+    }
 }

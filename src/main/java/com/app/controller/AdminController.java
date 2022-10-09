@@ -92,7 +92,7 @@ public class AdminController extends BaseController {
     }
 
     @GetMapping("/kategoriEdit")
-    public String showUpdateFormKategori(@RequestParam int id, Model model) throws Exception {
+    public String showUpdateFormKategori(@RequestParam Long id, Model model) throws Exception {
         Event event = eventService.findById(id);
         model.addAttribute("event", event);
 
@@ -100,7 +100,7 @@ public class AdminController extends BaseController {
     }
 
     @PostMapping("/kategoriUpdate/{id}")
-    public String updateKategori(Model model, HttpServletRequest req, @RequestParam int id) throws Exception {
+    public String updateKategori(Model model, HttpServletRequest req, @RequestParam Long id) throws Exception {
         Event event = eventService.findById(id);
         event.setName(req.getParameter("name"));
         eventService.update(event);
@@ -123,7 +123,7 @@ public class AdminController extends BaseController {
     }
 
     @GetMapping("/kategoriDelete")
-    public String deleteEvent(@RequestParam int id) throws Exception {
+    public String deleteEvent(@RequestParam Long id) throws Exception {
         eventService.deleteById(id);
 
         return "redirect:/admin/kategori";
@@ -140,7 +140,7 @@ public class AdminController extends BaseController {
     }
 
     @GetMapping("/donationUpdate")
-    public String updateDonation(@RequestParam int id, int status) throws Exception {
+    public String updateDonation(@RequestParam Long id, int status) throws Exception {
         Donation donasi = donationService.findById(id);
         donasi.setStatus(status);
         donationService.update(donasi);

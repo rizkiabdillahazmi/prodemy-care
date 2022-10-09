@@ -25,14 +25,14 @@ public class EventDaoImp implements EventDao{
 	}
 	
 	@Override
-	public Event findById(int id) throws Exception {
+	public Event findById(Long id) throws Exception {
 		Session session = this.sessionFactory.getCurrentSession();
 		Event event = (Event) session.get(Event.class, id);
 		return event;
 	}
 
 	@Override
-	public void deleteById(int id) throws Exception {
+	public void deleteById(Long id) throws Exception {
 		Session session = this.sessionFactory.getCurrentSession();
 		Event event = (Event) session.load(Event.class, id);
 		session.delete(event);

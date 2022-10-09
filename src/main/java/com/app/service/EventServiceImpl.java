@@ -18,12 +18,12 @@ public class EventServiceImpl implements EventService {
 	private EventDao dao;
 	
 	@Override
-	public Event findById(int id) throws Exception {
+	public Event findById(Long id) throws Exception {
 		return dao.findById(id);
 	}
 
 	@Override
-	public void deleteById(int id) throws Exception {
+	public void deleteById(Long id) throws Exception {
 		dao.deleteById(id);
 		
 	}

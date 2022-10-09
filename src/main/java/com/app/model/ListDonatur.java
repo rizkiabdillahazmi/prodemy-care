@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -25,25 +27,31 @@ public class ListDonatur {
 	@Column(name = "list_id")
 	@SequenceGenerator(name="pk_donatur",sequenceName="seq_dtr", allocationSize=1)
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="pk_donatur")
-	private Long listId;
-		
-	@Column(name = "donatur_name", updatable = false, nullable = false)
+	private Long id;
+	
+//	@OneToOne
+//    @JoinColumn(name = "donation_id")
+//	private Donation donation;
+	@Column(name = "donation_id", nullable = false)
+	private Long donationId;
+	
+	@Column(name = "donatur_name", nullable = false)
 	private String nama;
 	
-	@Column(name = "donation_email", updatable = false, nullable = false)
-	private String email;
+	@Column(name = "donation_nominal", nullable = false)
+	private Long nominal;
 	
-	@Column(name = "donation_phone", updatable = false, nullable = false)
+	@Column(name = "payment_id", nullable = false)
+    private int rekening;
+	
+	@Column(name = "donation_phone", nullable = false)
 	private String phone;
 	
-	@Column(name = "total_donation", updatable = false, nullable = false)
-	private String total;
-	
-	@Column(name = "anonim", updatable = false, nullable = false)
-	private int anonim;
+	@Column(name = "donation_support", nullable = false)
+	private String dukungan;
 	
 	@CreationTimestamp
-	@Column(name = "created_at", nullable = false, updatable = false)
+	@Column(name = "created_at", nullable = false)
     private LocalDateTime createdAt;
 	
 	@UpdateTimestamp

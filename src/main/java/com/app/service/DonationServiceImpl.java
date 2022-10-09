@@ -17,31 +17,34 @@ public class DonationServiceImpl implements DonationService{
 	private DonationDao dao;
 	
 	@Override
-	public Donation findById(int id) throws Exception {
+	public Donation findById(Long id) throws Exception {
 		return dao.findById(id);
 	}
 
 	@Override
-	public void deleteById(String id) throws Exception {
+	public void deleteById(Long id) throws Exception {
 		dao.deleteById(id);
 		
 	}
 
 	@Override
-	public void insert(Donation donation) throws Exception {
-		dao.insert(donation);
-		
+	public void save(Donation donation) throws Exception {
+		dao.save(donation);
 	}
-
+	
 	@Override
-	public void update(Donation donation) throws Exception {
-		dao.update(donation);
-		
-	}
-
+    public void update(Donation donation) throws Exception {
+        dao.update(donation);
+    }
+	
 	@Override
 	public List<Donation> findAll() throws Exception {
 		return dao.findAll();
 	}
+
+    @Override
+    public List<Donation> homeFindAll() throws Exception {
+        return dao.homeFindAll();
+    }
 
 }

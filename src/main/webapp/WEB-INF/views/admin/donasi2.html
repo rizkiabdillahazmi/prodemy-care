@@ -17,7 +17,9 @@
 			<th>Status Donasi</th>
 			<th>File</th>
 			<th>Photo</th>
+			<th>Bank<th>
 			<th>Tanggal Update</th>
+			<th>Validasi</th>
 		</tr>
 		<tr th:each="donasi : ${list}">
             <td th:text="${donasi.id}"></td>
@@ -31,6 +33,10 @@
             <td th:text="${donasi.photo}"></td>
             <td th:text="${donasi.payment}"></td>
             <td th:text="${donasi.updatedAt}"></td>
+            <td>
+            	<a th:href="@{donationUpdate(id=${donasi.id},status=1)}">Setuju</a>
+            	<a th:href="@{donationUpdate(id=${donasi.id},status=0)}">Tolak</a>
+            </td>
      	</tr>
 	</table>
 </body>

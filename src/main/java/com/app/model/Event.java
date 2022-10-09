@@ -1,10 +1,15 @@
 package com.app.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -20,9 +25,11 @@ public class Event {
 	@Column(name = "event_id", updatable = false, nullable = false)
 	@SequenceGenerator(name="pk_event", sequenceName="seq_event", allocationSize=1)
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="pk_event")
-	private int id;
+	private Long id;
 	
 	@Column(name = "event_name", nullable = false)
 	private String name;
-
+	
+//	@OneToOne(mappedBy = "event")
+//    private Donation donation;
 }

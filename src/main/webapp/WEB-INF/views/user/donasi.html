@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head lang="en" th:replace="admin/layouts/head :: head">
+</head>
+
+<body class="bg-gray-100">
+	<aside th:replace="user/layouts/aside :: aside"></aside>
+	<main class="w-[80%] ml-auto">
+		<div th:replace="user/layouts/header :: header"></div>
+
+		<section class="mx-6 mt-24">
+			<!-- component -->
+			<div class="overflow-x-auto">
+				<div
+					class="flex items-center justify-center overflow-hidden font-sans">
+					<div class="w-full border-2 border-white rounded-lg shadow-lg">
+						<div class="bg-white rounded-lg shadow-md">
+							<div
+								class="grid grid-cols-[0.07fr_0.5fr_repeat(4,_0.4fr)_0.2fr] justify-items-center items-center border-b-2 rounded-t-lg border-slate-300 uppercase px-4 py-3 text-white bg-indigo-600 font-semibold">
+								<div>No</div>
+								<div>Judul</div>
+								<div>Kategori</div>
+								<div>Target Donasi</div>
+								<div>Deadline</div>
+								<div>Status</div>
+								<div>AKSI</div>
+							</div>
+							<div th:each="donasi, iter : ${listDonasi}"
+								class="py-4 dropdown__wrapper even:bg-white odd:bg-gray-100 hover:bg-gray-200">
+								<div
+									class="dropdown__cell grid grid-cols-[0.07fr_0.5fr_repeat(4,_0.4fr)_0.2fr] items-center px-4">
+									<div th:text="${iter.index+1}" class="text-center"></div>
+                                    <div th:text="${donasi.title}" class="ml-2 text-left"></div>
+                                    <div th:text="${donasi.event.name}" class="text-center"></div>
+                                    <div th:text="${donasi.target}" class="text-center"></div>
+                                    <div th:text="${donasi.deadline}" class="text-center"></div>
+									<div class="text-center">
+										<span th:if="${donasi.status == 2}"
+											class="px-2 py-1 text-xs font-bold text-red-600 bg-red-200 rounded-full">Ditolak</span>
+										<span th:if="${donasi.status == 1}"
+											class="px-2 py-1 text-xs font-bold text-green-600 bg-green-200 rounded-full">Disetujui</span>
+										<span th:if="${donasi.status == 0}"
+											class="px-2 py-1 text-xs font-bold text-yellow-600 bg-yellow-200 rounded-full">Menunggu
+											Konfirmasi</span>
+									</div>
+									<div class="cursor-pointer button-show">
+										<div class="flex justify-center text-center item-center">
+											<div
+												class="w-5 mr-2 transform hover:text-green-500 hover:scale-110"
+												onclick="expandCell(this)">
+												<svg xmlns="http://www.w3.org/2000/svg" fill="none"
+													viewBox="0 0 24 24" stroke="currentColor">
+                                                    <path
+														stroke-linecap="round" stroke-linejoin="round"
+														stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                                                    <path
+														stroke-linecap="round" stroke-linejoin="round"
+														stroke-width="2"
+														d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                                                </svg>
+											</div>
+											<a th:href="@{donasiEdit(id=${donasi.id})}">
+											<div
+												class="w-5 mr-2 transform hover:text-blue-500 hover:scale-110">
+												<svg xmlns="http://www.w3.org/2000/svg" fill="none"
+													viewBox="0 0 24 24" stroke="currentColor">
+                                                    <path
+														stroke-linecap="round" stroke-linejoin="round"
+														stroke-width="2"
+														d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
+                                                </svg>
+											</div>
+											</a>
+											
+										</div>
+									</div>
+								</div>
+								<div
+									class="dropdown__cell-content transition-all duration-300 ease-[ease] max-h-0 overflow-hidden overflow-y-scroll">
+									<div
+										class="max-w-screen-lg p-4 mx-20 text-sm border-4 border-blue-400 border-dashed rounded-md bg-stone-100">
+										<div class="text-lg font-bold text-center">Detail
+											Donasi:</div>
+										<div
+											class="w-[80%] p-4 mx-auto mt-2 font-semibold rounded-md bg-stone-100">
+											<div class="flex justify-between py-1">
+												<div class="w-[30%]">Judul</div>
+												<div class="w-[5%] text-center">:</div>
+												<div th:text="${donasi.title}" class="w-[65%]">Bencana Alam di Kabupaten A</div>
+											</div>
+											<div class="flex justify-between py-1">
+												<div class="w-[30%]">Kategori</div>
+												<div class="w-[5%] text-center">:</div>
+												<div th:text="${donasi.event.name}" class="w-[65%]">Bencana Alam</div>
+											</div>
+											<div class="flex justify-between py-1">
+												<div class="w-[30%]">Target Donasi</div>
+												<div class="w-[5%] text-center">:</div>
+												<div th:text="'Rp '+${#numbers.formatInteger(donasi.target,3,'POINT')}" class="w-[65%]">Rp 20.000.000</div>
+											</div>
+											<div class="flex justify-between py-1">
+												<div class="w-[30%]">Donasi Terkumpul</div>
+												<div class="w-[5%] text-center">:</div>
+												<div class="w-[65%]">Rp <span th:text="${donasi.donatur.size != 0} ? ${#numbers.formatInteger(#aggregates.sum(donasi.donatur.![nominal]),3,'POINT')} : ${donasi.donatur.size}"></span></div>
+											</div>
+											<div class="flex justify-between py-1">
+												<div class="w-[30%]">Foto</div>
+												<div class="w-[5%] text-center">:</div>
+												<div th:text="${donasi.photo}" class="w-[65%]"></div>
+											</div>
+											<div class="flex justify-between py-1">
+												<div class="w-[30%]">Rekening</div>
+												<div class="w-[5%] text-center">:</div>
+												<div th:text="${donasi.payment.name}" class="w-[65%]"></div>
+											</div>
+											<div class="flex justify-between py-1">
+												<div class="w-[30%]">No Rekening</div>
+												<div class="w-[5%] text-center">:</div>
+												<div th:text="${donasi.payment.rekening}" class="w-[65%]"></div>
+											</div>
+											<div class="flex justify-between py-1">
+												<div class="w-[30%]">Tanggal Pengajuan</div>
+												<div class="w-[5%] text-center">:</div>
+												<div th:text="${donasi.createdAt}" class="w-[65%]">07 Oktober 2022</div>
+											</div>
+											<div class="flex justify-between py-1">
+												<div class="w-[30%]">Tanggal berakhir</div>
+												<div class="w-[5%] text-center">:</div>
+												<div th:text="${donasi.deadline}" class="w-[65%]">10 Oktober 2022</div>
+											</div>
+										</div>
+										<div class="p-4 mt-2 border-t-4">
+											<div class="mb-4 font-semibold">
+												Para Donatur (<span th:text="${listDonatur.size}">(45)</span>)
+											</div>
+											<div
+												class="grid flex-wrap items-center grid-cols-2 gap-x-4 gap-y-6">
+												<div th:each="donatur : ${donasi.donatur}" class="p-2 mb-2 border-2 rounded-md">
+													<div class="flex items-center justify-start gap-x-3">
+														<svg xmlns="http://www.w3.org/2000/svg" fill="none"
+															viewBox="0 0 24 24" stroke-width="1.5"
+															stroke="currentColor" class="w-10 h-10">
+                                                            <path
+																stroke-linecap="round" stroke-linejoin="round"
+																d="M17.982 18.725A7.488 7.488 0 0012 15.75a7.488 7.488 0 00-5.982 2.975m11.963 0a9 9 0 10-11.963 0m11.963 0A8.966 8.966 0 0112 21a8.966 8.966 0 01-5.982-2.275M15 9.75a3 3 0 11-6 0 3 3 0 016 0z" />
+                                                        </svg>
+														<div>
+															<div th:text="${donatur.nama}" class="text-[#3a99d8] text-sm font-semibold"></div>
+															<div class="text-xs font-semibold">
+																Donasi : Rp <span th:text="${#numbers.formatInteger(donatur.nominal,3,'POINT')}" class="nominal">10000</span>
+															</div>
+															<div class="mt-2 text-sm italic">
+																"<span th:text="${donatur.dukungan}">Dukungan</span>"
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<footer lang="en" th:replace="user/layouts/footer :: footer">
+		</footer>
+	</main>
+
+	<script th:src="@{/resources/assets/js/script.js}"></script>
+</body>
+
+</html>
